@@ -1,0 +1,3 @@
+rootProject.name = 'ms-openapi-gateway'
+
+include 'openapi-gateway-endpoints:openapi-gateway-rest-api'

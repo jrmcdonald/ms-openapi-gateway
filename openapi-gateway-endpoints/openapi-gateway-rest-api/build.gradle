@@ -1,0 +1,52 @@
+plugins {
+    id 'jacoco'
+    id 'maven-publish'
+}
+
+dependencies {
+    implementation 'com.jrmcdonald:ms-common-ext-spring-datetime'
+    implementation 'com.jrmcdonald:ms-common-ext-spring-reactive-context'
+    implementation 'com.jrmcdonald:ms-common-ext-spring-reactive-filter'
+
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'net.logstash.logback:logstash-logback-encoder'
+    implementation "org.springdoc:springdoc-openapi-webflux-ui"
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway:Hoxton.SR6' // TODO: add to bom
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    testImplementation "com.squareup.okhttp3:mockwebserver"
+    testImplementation "io.projectreactor:reactor-test"
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}
+
+bootBuildImage {
+    imageName = "jrmcdonald/ms-openapi-gateway:${project.version}"
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/jrmcdonald/ifsc-ical-generator")
+            credentials {
+                username = "jrmcdonald"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        bootJava(MavenPublication) {
+            artifact bootJar
+        }
+    }
+}

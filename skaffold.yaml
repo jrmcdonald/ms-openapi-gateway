@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta1
+kind: Config
+metadata:
+  name:
+build:
+  artifacts:
+    - image: jrmcdonald/ms-openapi-gateway
+      custom:
+        buildCommand: ./scripts/docker-build.sh
+        dependencies:
+          paths:
+            - .
+deploy:
+  helm:
+    releases:
+      - name: ms-openapi-gateway
+        namespace: dev
+        chartPath: qwyck/ms-openapi-gateway
+        imageStrategy:
+          helm:
+            explicitRegistry: false
+        remote: true
+        values:
+          image: jrmcdonald/ms-openapi-gateway
+        valuesFiles:
+          - charts/ms-openapi-gateway/values.yaml

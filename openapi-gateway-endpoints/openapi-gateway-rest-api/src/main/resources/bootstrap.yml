@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ms-openapi-gateway
+  cloud:
+    kubernetes:
+      secrets:
+        enabled: true
+        paths: /etc/secrets
+---
+spring:
+  profiles: local,unit-test,functional-test
+  cloud:
+    kubernetes:
+      enabled: false

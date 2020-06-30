@@ -1,0 +1,6 @@
+openapi:
+  endpoints:
+    customer-orchestration:
+      gateway-prefix: /customer-orchestration
+      service-url: http://localhost:8081
+      service-path: /v3/api-docs
