@@ -12,7 +12,7 @@ dependencies {
     implementation 'net.logstash.logback:logstash-logback-encoder'
     implementation "org.springdoc:springdoc-openapi-webflux-ui"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.cloud:spring-cloud-starter-gateway:Hoxton.SR6' // TODO: add to bom
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
 
