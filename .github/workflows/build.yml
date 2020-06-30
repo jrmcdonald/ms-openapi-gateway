@@ -21,6 +21,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    steps:
       - name: Notify Slack Started
         uses: voxmedia/github-action-slack-notify-build@v1
         id: slack
@@ -31,7 +32,6 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
-    steps:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
