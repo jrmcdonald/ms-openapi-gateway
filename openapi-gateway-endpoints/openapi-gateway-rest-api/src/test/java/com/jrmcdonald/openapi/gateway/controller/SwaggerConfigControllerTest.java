@@ -30,6 +30,6 @@ class SwaggerConfigControllerTest {
                                                            .expectBody(String.class)
                                                            .returnResult();
 
-        assertThat(result.getResponseBody()).isEqualTo("{\"urls\":[{\"url\":\"/customer-orchestration/v3/api-docs\",\"name\":\"customer-orchestration\"}]}");
+        assertThat(result.getResponseBody()).isEqualTo("{\"urls\":[{\"url\":\"/openapi-gateway/customer-orchestration/v3/api-docs\",\"name\":\"customer-orchestration\"}]}");
     }
 }

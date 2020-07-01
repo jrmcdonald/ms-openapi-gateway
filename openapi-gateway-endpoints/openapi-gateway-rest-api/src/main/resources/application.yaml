@@ -17,4 +17,4 @@ management:
 springdoc:
   swagger-ui:
     path: /
-    config-url: /swagger-config.json
+    config-url: /openapi-gateway/swagger-config.json

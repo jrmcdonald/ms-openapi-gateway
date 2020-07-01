@@ -27,7 +27,7 @@ public class SwaggerConfigController {
         return Mono.just(properties.getEndpoints()
                                    .entrySet()
                                    .stream()
-                                   .map(entry -> new SwaggerUrl(entry.getValue().getGatewayPrefix() + entry.getValue().getServicePath(), entry.getKey()))
+                                   .map(entry -> new SwaggerUrl(entry.getValue().getGatewayPrefix() + entry.getValue().getServicePrefix() + entry.getValue().getServicePath(), entry.getKey()))
                                    .collect(collectingAndThen(toList(), SwaggerConfig::new)));
     }
 }

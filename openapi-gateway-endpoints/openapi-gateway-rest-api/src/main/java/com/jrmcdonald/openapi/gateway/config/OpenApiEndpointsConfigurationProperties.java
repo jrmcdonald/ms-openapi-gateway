@@ -22,6 +22,7 @@ public class OpenApiEndpointsConfigurationProperties {
 
         private final String gatewayPrefix;
         private final String serviceUrl;
+        private final String servicePrefix;
         private final String servicePath;
     }
 }

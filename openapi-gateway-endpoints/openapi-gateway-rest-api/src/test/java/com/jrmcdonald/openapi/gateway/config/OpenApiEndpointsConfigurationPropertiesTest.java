@@ -14,39 +14,54 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OpenApiEndpointsConfigurationPropertiesTest {
 
+    private static final String EXPECTED_VALUE = "value";
+    private static final String TEST_ENDPOINT = "test_endpoint";
+
     @Test
     @DisplayName("Should bind gateway-prefix when set")
     void shouldBindGatewayPrefixWhenSet() {
         Map<String, String> properties = new HashMap<>();
-        properties.put("endpoints.test_endpoint.gateway-prefix", "value");
+        properties.put("endpoints.test_endpoint.gateway-prefix", EXPECTED_VALUE);
 
         Binder binder = new Binder(new MapConfigurationPropertySource(properties));
         BindResult<OpenApiEndpointsConfigurationProperties> bindResult = binder.bind("", Bindable.of(OpenApiEndpointsConfigurationProperties.class));
 
-        assertThat(bindResult.get().getEndpoints().get("test_endpoint").getGatewayPrefix()).isEqualTo("value");
+        assertThat(bindResult.get().getEndpoints().get(TEST_ENDPOINT).getGatewayPrefix()).isEqualTo(EXPECTED_VALUE);
     }
 
     @Test
     @DisplayName("Should bind service-url when set")
     void shouldBindServiceUrlWhenSet() {
         Map<String, String> properties = new HashMap<>();
-        properties.put("endpoints.test_endpoint.service-url", "value");
+        properties.put("endpoints.test_endpoint.service-url", EXPECTED_VALUE);
 
         Binder binder = new Binder(new MapConfigurationPropertySource(properties));
         BindResult<OpenApiEndpointsConfigurationProperties> bindResult = binder.bind("", Bindable.of(OpenApiEndpointsConfigurationProperties.class));
 
-        assertThat(bindResult.get().getEndpoints().get("test_endpoint").getServiceUrl()).isEqualTo("value");
+        assertThat(bindResult.get().getEndpoints().get(TEST_ENDPOINT).getServiceUrl()).isEqualTo(EXPECTED_VALUE);
+    }
+
+    @Test
+    @DisplayName("Should bind service-prefix when set")
+    void shouldBindServicePrefixWhenSet() {
+        Map<String, String> properties = new HashMap<>();
+        properties.put("endpoints.test_endpoint.service-prefix", EXPECTED_VALUE);
+
+        Binder binder = new Binder(new MapConfigurationPropertySource(properties));
+        BindResult<OpenApiEndpointsConfigurationProperties> bindResult = binder.bind("", Bindable.of(OpenApiEndpointsConfigurationProperties.class));
+
+        assertThat(bindResult.get().getEndpoints().get(TEST_ENDPOINT).getServicePrefix()).isEqualTo(EXPECTED_VALUE);
     }
 
     @Test
     @DisplayName("Should bind service-path when set")
     void shouldBindServicePathWhenSet() {
         Map<String, String> properties = new HashMap<>();
-        properties.put("endpoints.test_endpoint.service-path", "value");
+        properties.put("endpoints.test_endpoint.service-path", EXPECTED_VALUE);
 
         Binder binder = new Binder(new MapConfigurationPropertySource(properties));
         BindResult<OpenApiEndpointsConfigurationProperties> bindResult = binder.bind("", Bindable.of(OpenApiEndpointsConfigurationProperties.class));
 
-        assertThat(bindResult.get().getEndpoints().get("test_endpoint").getServicePath()).isEqualTo("value");
+        assertThat(bindResult.get().getEndpoints().get(TEST_ENDPOINT).getServicePath()).isEqualTo(EXPECTED_VALUE);
     }
 }
