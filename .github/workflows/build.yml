@@ -58,10 +58,10 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: Yarn Audit
-        run: |
-          yarn install --frozen-lockfile
-          yarn audit
+      #      - name: Yarn Audit
+      #        run: |
+      #          yarn install --frozen-lockfile
+      #          yarn audit --level moderate
 
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1

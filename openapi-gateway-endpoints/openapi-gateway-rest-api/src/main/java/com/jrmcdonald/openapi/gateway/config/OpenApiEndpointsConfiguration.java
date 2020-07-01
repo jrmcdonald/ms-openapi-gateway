@@ -28,7 +28,7 @@ public class OpenApiEndpointsConfiguration {
     }
 
     private Function<PredicateSpec, AsyncBuilder> routeForJsonRequests(Endpoint endpoint) {
-        return r -> r.path(endpoint.getGatewayPrefix() + endpoint.getServicePath())
+        return r -> r.path(endpoint.getServicePrefix() + endpoint.getServicePath())
                      .filters(f -> f.setPath(endpoint.getServicePath()))
                      .uri(endpoint.getServiceUrl());
     }
