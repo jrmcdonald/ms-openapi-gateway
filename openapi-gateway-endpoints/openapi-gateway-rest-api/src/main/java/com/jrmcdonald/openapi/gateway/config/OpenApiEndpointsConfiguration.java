@@ -3,6 +3,7 @@ package com.jrmcdonald.openapi.gateway.config;
 import com.jrmcdonald.openapi.gateway.config.OpenApiEndpointsConfigurationProperties.Endpoint;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.route.Route.AsyncBuilder;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.PredicateSpec;
@@ -18,6 +19,7 @@ import java.util.function.Function;
 public class OpenApiEndpointsConfiguration {
 
     @Bean
+    @RefreshScope
     public RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder, OpenApiEndpointsConfigurationProperties properties) {
         Builder routes = routeLocatorBuilder.routes();
 
