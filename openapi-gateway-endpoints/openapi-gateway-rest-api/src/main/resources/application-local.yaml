@@ -1,10 +1,19 @@
 openapi:
   endpoints:
     customer-orchestration:
-      gateway-prefix: /customer-orchestration
-      service-url: http://localhost2:8081
+      gateway-prefix: /
+      service-url: http://localhost:8081
+      service-prefix: /customer-orchestration
       service-path: /v3/api-docs
     customer-entity:
-      gateway-prefix: /customer-entity
-      service-url: http://localhost2:8082
+      gateway-prefix: /
+      service-url: http://localhost:8082
+      service-prefix: /customer-entity
       service-path: /v3/api-docs
+
+springdoc:
+  swagger-ui:
+    path: /
+    config-url: /openapi-gateway/swagger-config.json
+  webjars:
+    prefix: /boo

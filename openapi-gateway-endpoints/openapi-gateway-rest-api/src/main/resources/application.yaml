@@ -7,14 +7,3 @@ spring:
         enabled: true
   main:
     banner-mode: off
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-
-springdoc:
-  swagger-ui:
-    path: /
-    config-url: /openapi-gateway/swagger-config.json
