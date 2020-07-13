@@ -1,9 +1,27 @@
 spring:
-  application:
-    name: ms-openapi-gateway
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
   main:
     banner-mode: off
+
+---
+spring:
+  profiles: local,unit-test,functional-test
+
+openapi:
+  endpoints:
+    customer-orchestration:
+      gateway-prefix: /
+      service-url: http://localhost:8081
+      service-prefix: /customer-orchestration
+      service-path: /v3/api-docs
+    customer-entity:
+      gateway-prefix: /
+      service-url: http://localhost:8082
+      service-prefix: /customer-entity
+      service-path: /v3/api-docs
+
+springdoc:
+  swagger-ui:
+    path: /
+    config-url: /openapi-gateway/swagger-config.json
+  webjars:
+    prefix: /boo
